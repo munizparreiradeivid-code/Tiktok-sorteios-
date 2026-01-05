@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FutbolTok</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#f2f2f2}
+
+/* OVERLAY INICIAL */
+.overlay{
+  position:fixed;
+  top:0;left:0;right:0;bottom:0;
+  background:rgba(0,0,0,.6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+
+.overlay .box{
+  background:#fff;
+  padding:25px;
+  border-radius:18px;
+  text-align:center;
+  max-width:320px;
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+.overlay h2{
+  color:#f23a5e;
+  margin-bottom:10px;
+}
+
+.overlay p{
+  font-size:14px;
+  color:#555;
+  margin-bottom:20px;
+}
+
+.overlay button{
+  background:#f23a5e;
+  color:#fff;
+  border:none;
+  padding:12px 30px;
+  border-radius:30px;
+  font-size:16px;
+  font-weight:bold;
+}
+
+/* SITE */
+.topo{
+  background:#f23a5e;color:#fff;text-align:center;
+  padding:18px;font-size:22px;font-weight:bold;
+}
+
+.card{
+  background:#fff;margin:15px;padding:16px;
+  border-radius:16px;
+  box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
+
+.saldo-card{display:flex;justify-content:space-between;align-items:center}
+.saldo-card h2{font-size:30px}
+.saldo-card small{color:#777}
+
+.btn-sacar{
+  background:#f23a5e;color:#fff;border:none;
+  padding:12px 18px;border-radius:12px;
+  font-size:16px;font-weight:bold;
+}
+
+.moedas{margin-top:8px;font-size:14px;color:#d4a017}
+
+.parabens{display:flex;justify-content:space-between;align-items:center}
+.parabens p{font-size:14px;color:#666}
+
+.valor{color:#f23a5e;font-size:24px;font-weight:bold}
+.extra{font-size:14px;margin-top:8px}
+
+.check{
+  width:42px;height:42px;border-radius:50%;
+  background:#2ecc71;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;
+}
+
+.gol{
+  position:relative;
+  background:#fff8e6;
+  margin:30px 15px 15px;
+  padding:40px 20px 20px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 6px 15px rgba(0,0,0,.1);
+}
+
+.gol .bola-topo{
+  position:absolute;
+  top:-35px;
+  left:50%;
+  transform:translateX(-50%);
+  width:80px;
+}
+
+.gol h3{font-size:22px;margin-top:10px}
+.gol p{font-size:14px;color:#555}
+
+.gol .premio{
+  font-size:36px;font-weight:bold;margin:15px 0;
+}
+
+.btn{
+  background:#f23a5e;color:#fff;border:none;
+  width:100%;padding:14px;border-radius:30px;
+  font-size:18px;font-weight:bold;
+  margin-top:10px;
+}
+
+.aviso{
+  background:#fff3cd;padding:12px;
+  border-radius:10px;font-size:14px;
+}
+
+.pix{
+  background:#eee;padding:12px;
+  border-radius:10px;word-break:break-all;
+  font-size:13px;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border-radius:10px;
+  border:1px solid #ccc;
+  font-size:15px;
+}
+
+.menu{
+  position:fixed;bottom:0;left:0;right:0;
+  background:#fff;border-top:1px solid #ddd;
+  display:flex;justify-content:space-around;
+  padding:8px 0;
+}
+
+.menu div{font-size:11px;color:#999;text-align:center}
+.menu span{font-size:20px;display:block}
+.menu .ativo{color:#f23a5e;font-weight:bold}
+
+.hidden{display:none}
+
+.qr{
+  display:flex;
+  justify-content:center;
+  margin:15px 0;
+}
+</style>
+</head>
+
+<body>
+
+<!-- TELA INICIAL -->
+<div class="overlay" id="overlay">
+  <div class="box">
+    <h2> Parabéns!</h2>
+    <p>Você foi sorteado em uma <b>campanha exclusiva de recompensas</b>.</p>
+    <button onclick="fecharOverlay()">Obrigado</button>
+  </div>
+</div>
+
+<div class="topo">FutbolTok</div>
+
+<div id="inicio">
+  <div class="card saldo-card">
+    <div>
+      <small>Seu saldo</small>
+      <h2>R$ 500,00</h2>
+      <div class="moedas"> +124 moedas ganhas</div>
+    </div>
+    <button class="btn-sacar" onclick="abrirDados()">Sacar</button>
+  </div>
+
+  <div class="card parabens">
+    <div>
+      <h3>Parabéns!</h3>
+      <p>Você concluiu todas as tarefas</p>
+      <div class="valor">R$ 5.000,00</div>
+      <div class="extra">Entre por 14 dias para ganhar <b>R$ 8.414,00</b></div>
+    </div>
+    <div class="check"></div>
+  </div>
+
+  <div class="gol">
+    
+    <h3>Gol de Prêmios</h3>
+    <p>Parabéns! Como parte de uma campanha de recompensas exclusiva.</p>
+    <div class="premio">R$ 500,00</div>
+    <button class="btn">Obrigado</button>
+  </div>
+</div>
+
+<script>
+function fecharOverlay(){
+  document.getElementById("overlay").style.display="none";
+}
+
+function abrirDados(){
+  inicio.classList.add("hidden");
+  dados.classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
